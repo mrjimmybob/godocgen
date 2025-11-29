@@ -1,0 +1,305 @@
+{
+  "dealers": [
+    {
+      "nombre": "Toyogran",
+      "esGrupo": true,
+      "marca": "Toyota",
+      "razon": "Toyogran, S.L.U.",
+      "direccionPostal": "C/Diego Vega Sarmiento, 5. 35014 Las Palmas de G.C.",
+      "direccion1": {
+        "linea1": "C/Diego Vega Sarmiento, 5",
+        "linea2": "Pol. Ind. Miller Bajo",
+        "linea3": "35014 Las Palmas de G.C.",
+        "telefono": "928 447 600"
+      },
+      "direccion2": {
+        "linea1": "C/Canal Izquierdo, 15.",
+        "linea2": "Pol. Ind. Arinaga",
+        "linea3": "35008 Agüimes",
+        "telefono": "828 01 79 50"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Arinaga",
+      "esGrupo": true,
+      "razon": "Toyogran, S.L.U.",
+      "marca": "Toyota",
+      "direccionPostal": "C/Canal Izquierdo, 15. 35008 Agüimes",
+      "direccion1": {
+        "linea1": "C/Canal Izquierdo, 15.",
+        "linea2": "Pol. Ind. Arinaga",
+        "linea3": "35008 Agüimes",
+        "telefono": "828 01 79 50"
+      },
+      "direccion2": {
+        "linea1": "C/Diego Vega Sarmiento, 5",
+        "linea2": "Pol. Ind. Miller Bajo",
+        "linea3": "35014 Las Palmas de G.C.",
+        "telefono": "928 447 600"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Toyoten",
+      "esGrupo": true,
+      "razon": "Toyoten, S.L.U.",
+      "marca": "Toyota",
+      "direccionPostal": "Carretera del Rosario, Km 5, 38108 Taco, La Laguna",
+      "direccion1": {
+        "linea1": "Crta. del Rosario, km 5",
+        "linea2": "Taco. Santa Cruz de Tenerife",
+        "linea3": "38108 Santa Cruz de Tenerife",
+        "telefono": "922 611 300"
+      },
+      "direccion2": {
+        "linea1": "Avda. 7 Islas Canarias, 22.",
+        "linea2": "P.I. Llano del Camello (Chafiras)",
+        "linea3": "38260 San Miguel de Abona",
+        "telefono": "828 01 79 50"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Chafiras",
+      "esGrupo": true,
+      "razon": "Toyoten, S.L.U.",
+      "marca": "Toyota",
+      "direccionPostal": "Carretera del Rosario, Km 5, 38108 Taco, La Laguna",
+      "direccion1": {
+        "linea1": "Avda. 7 Islas Canarias, 22.",
+        "linea2": "P.I. Llano del Camello (Chafiras)",
+        "linea3": "38260 San Miguel de Abona",
+        "telefono": "828 01 79 50"
+      },
+      "direccion2": {
+        "linea1": "Crta. del Rosario, km 5",
+        "linea2": "Taco. Santa Cruz de Tenerife",
+        "linea3": "38108 Santa Cruz de Tenerife",
+        "telefono": "922 611 300"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "SolNaciente",
+      "esGrupo": true,
+      "razon": "Sol Naciente, S.L.U.",
+      "marca": "Toyota",
+      "direccionPostal": "C/Diego Vega Sarmiento, 5. 35014 Las Palmas de G.C.",
+      "direccion1": {
+        "linea1": "C/Diego Vega Sarmiento, 5",
+        "linea2": "Pol. Ind. Miller Bajo",
+        "linea3": "35014 Las Palmas de G.C.",
+        "telefono": "928 447 600"
+      },
+      "direccion2": {
+        "linea1": "Crta. del Rosario, km 5",
+        "linea2": "Taco. Santa Cruz de Tenerife",
+        "linea3": "38108 Santa Cruz de Tenerife",
+        "telefono": "922 611 300"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Lexus",
+      "marca": "Lexus",
+      "esGrupo": true,
+      "razon": "Sol Naciente, S.L.U.",
+      "direccionPostal": "C/Diego Vega Sarmiento, 5. 35014 Las Palmas de G.C.",
+      "direccion1": {
+        "linea1": "Avenida Nestor,2",
+        "linea2": "esq. con C/ León y Castillo, 203",
+        "linea3": "35004 Las Palmas de G.C.",
+        "telefono": "928 243291"
+      },
+      "direccion2": {
+        "linea1": "C/ La Isa, 51",
+        "linea2": "Polígono Ind. Llanos del Camello",
+        "linea3": "38639 San Miguel de Abona - S/C de Tenerife",
+        "telefono": "922 882199"
+      },
+      "direccion3": {
+        "linea1": "C/ Las Industrias, 20",
+        "linea2": "Cercado Chico, Taco",
+        "linea3": "38108 La Laguna - S/C de Tenerife",
+        "telefono": "922 882199"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Toyonorte",
+      "marca": "Toyota",
+      "razon": "Automóviles el Sauzal S.L.",
+      "direccionPostal": "Ctra.Gral. las Arenas, S/N.",
+      "direccion1": {
+        "linea1": "Ctra.Gral. las Arenas, S/N. 38400 Pto. de la Cruz. Tenerife",
+        "linea2": "38400 Pto. de la Cruz",
+        "linea3": "Santa Cruz de Tenerife",
+        "telefono": "922 38 96 77"
+      },
+      "direccion2": {
+        "linea1": "Autopista del Norte, km. 17,5.",
+        "linea2": "Ed. Toyota",
+        "linea3": "38350 Tacoronte. Tenerife",
+        "telefono": "922 56 00 92"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Elipal",
+      "marca": "Toyota",
+      "razon": "Elipal Autos, S.L.",
+      "direccionPostal": "C/ Liquen, 2. 38430 Icod. Tenerife",
+      "direccion1": {
+        "linea1": "C/ Liquen, 2.",
+        "linea2": "Pol. Ind. Las Almenas",
+        "linea3": "38430 Icod. Tenerife",
+        "telefono": "922 121 565"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Faycan",
+      "marca": "Toyota",
+      "razon": "Faycan Motor, S.L.",
+      "direccionPostal": "C/. Aloe, 4 - 5. 35600 Pto. del Rosario. Fuerteventura",
+      "direccion1": {
+        "linea1": "C/. Aloe, 4 - 5.",
+        "linea2": "Urb. Ind. Risco Prieto",
+        "linea3": "35600 Pto. del Rosario. Fuerteventura",
+        "telefono": "928 167 813"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Lanzarote",
+      "marca": "Toyota",
+      "razon": "Faycan Automoción, S.L.",
+      "direccionPostal": "Carretera de S. Bartolomé, 93. 35500 Arrecife. Lanzarote",
+      "direccion1": {
+        "linea1": "C.I.F.: B-56917891",
+        "linea2": "Carretera de S. Bartolomé, 93.",
+        "linea3": "35500 Arrecife. Lanzarote",
+        "telefono": "928 81 65 81"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Toyomotor",
+      "marca": "Toyota",
+      "razon": "Toyomotor, S.L.",
+      "direccionPostal": "C/. Las Rosas, 20. 38760 Llanos de Aridane. La Palma",
+      "direccion1": {
+        "linea1": "C/. Las Rosas, 20.",
+        "linea2": "38760 Llanos de Aridane.",
+        "linea3": "La Palma. Santa Cruz de Tenerife",
+        "telefono": "922 46 11 10"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Toyoservicio",
+      "marca": "Toyota",
+      "razon": "ToyoServicio, S.L.",
+      "direccionPostal": "C/. Europa, s/n. 38710 Breña Alta. La Palma",
+      "direccion1": {
+        "linea1": "C/. Europa, s/n.",
+        "linea2": "(aeropuerto viejo)",
+        "linea3": "38710 Breña Alta. La Palma",
+        "telefono": "922 437 707"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Toyosur",
+      "marca": "Toyota",
+      "razon": "Toyosur, S.L.",
+      "direccionPostal": "C/. Cuevas de Cho Portada, s/n. 38611 San Isidro. TFE.",
+      "direccion1": {
+        "linea1": "C/. Cuevas de Cho Portada, s/n.",
+        "linea2": "San Isidro",
+        "linea3": "38611 Granadilla de Abona",
+        "telefono": "922 39 32 75"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Ingenio",
+      "marca": "Toyota",
+      "razon": "Autos Ingenio, S.L.",
+      "direccionPostal": "C/. Churruca, 1. 35250 Ingenio. Las Palmas",
+      "direccion1": {
+        "linea1": "C/. Churruca, 1.",
+        "linea2": "Ingenio",
+        "linea3": "35250 Las Palmas",
+        "telefono": "928 78 75 71"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Enma2RM",
+      "marca": "Toyota",
+      "razon": "Enma2RM Automóviles, S.L.",
+      "direccionPostal": "C/. Párroco Villar Reina, 109. 35011 Las Palmas.",
+      "direccion1": {
+        "linea1": "C/. Párroco Villar Reina, 109.",
+        "linea2": "35011 Las Palmas de G.C.",
+        "linea3": "Las Palmas",
+        "telefono": "928 25 12 44"
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Sonora",
+      "marca": "Toyota",
+      "razon": "Sonora, S.L.",
+      "direccionPostal": "C/. FIXME.",
+      "direccion1": {
+        "linea1": "C/. FIXME.",
+        "linea2": "FIXME.",
+        "linea3": "FIXME.",
+        "telefono": "FIXME."
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "SonoraSur",
+      "marca": "Toyota",
+      "razon": "SonoraSur, S.L.",
+      "direccionPostal": "C/. FIXME.",
+      "direccion1": {
+        "linea1": "C/. FIXME.",
+        "linea2": "FIXME.",
+        "linea3": "FIXME.",
+        "telefono": "FIXME."
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Naranjo",
+      "marca": "Toyota",
+      "razon": "Servicios Naranjo Melian, S.L.",
+      "direccionPostal": "C/. FIXME.",
+      "direccion1": {
+        "linea1": "C/. FIXME.",
+        "linea2": "FIXME.",
+        "linea3": "FIXME.",
+        "telefono": "FIXME."
+      },
+      "emp": 1
+    },
+    {
+      "nombre": "Frontera",
+      "marca": "Toyota",
+      "razon": "Autos La Frontera, S.L.",
+      "direccionPostal": "C/. FIXME.",
+      "direccion1": {
+        "linea1": "C/. FIXME.",
+        "linea2": "FIXME.",
+        "linea3": "FIXME.",
+        "telefono": "FIXME."
+      },
+      "emp": 1
+    }
+  ]
+}

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Por si acaso se me escapa alguna tilde o así -->
+    <style>
+      @font-face {
+        font-family: 'Toyota Display';
+        src: url('<%= resUrl %>/fonts/toyota-display.eot');
+        src: url('<%= resUrl %>/fonts/toyota-display.eot?#iefix') format('embedded-opentype'),
+          url('<%= resUrl %>/fonts/toyota-display.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      @font-face {
+        font-family: 'Toyota Text';
+        src: url('<%= resUrl %>/fonts/toyota-text.eot');
+        src: url('<%= resUrl %>/fonts/toyota-text.eot?#iefix') format('embedded-opentype'),
+          url('<%= resUrl %>/fonts/toyota-text.woff2') format('woff2'),
+          url('<%= resUrl %>/fonts/toyota-text.woff') format('woff'),
+          url('<%= resUrl %>/fonts/toyota-text.ttf') format('truetype'),
+          url('<%= resUrl %>/fonts/toyota-text.svg#toyota_textregular') format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      /* PURE CSS Grid */
+      .pure-g {
+        letter-spacing: -0.31em;
+        text-rendering: optimizespeed;
+        font-family: 'Toyota Text';
+        display: flex;
+        flex-flow: row wrap;
+        align-content: flex-start;
+      }
+
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        table .pure-g {
+          display: block;
+        }
+      }
+
+      .opera-only :-o-prefocus,
+      .pure-g {
+        word-spacing: -0.43em;
+      }
+
+      .pure-u {
+        display: inline-block;
+        letter-spacing: normal;
+        word-spacing: normal;
+        vertical-align: top;
+        text-rendering: auto;
+      }
+
+      .pure-g [class*='pure-u'] {
+        font-family: sans-serif;
+      }
+
+      /* Mis estilos */
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+
+      html {
+        height: 100%;
+      }
+
+      .alt-18 {
+        height: 20px;
+        flex-flow: row wrap;
+      }
+
+      .col0B {
+        margin: 1px;
+        display: inline-block;
+        letter-spacing: normal;
+        word-spacing: normal;
+      }
+
+      .col1B {
+        border-style: solid;
+        border-width: 1px;
+        display: inline-block;
+        letter-spacing: normal;
+        word-spacing: normal;
+      }
+
+      .pagina {
+        width: 18.46cm;
+        height: 27.16cm;
+        max-width: 18.46cm;
+        max-height: 27.16cm;
+        font-family: 'Toyota Text';
+        font-size: small;
+      }
+
+      .cabecera {
+        width: 21cm;
+        height: 3cm;
+      }
+
+      .logo {
+        position: absolute;
+        top: 0.51cm;
+        left: 16cm;
+        width: 3.8cm;
+        height: 1.2cm;
+      }
+
+      .empresa {
+        position: absolute;
+        width: 14.5cm;
+        height: 1cm;
+        font-size: x-large;
+        font-weight: bold;
+      }
+
+      .titulo {
+        font-family: 'Toyota Display';
+        font-size: x-large;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .subtitulo {
+        font-family: 'Toyota Display';
+        font-size: large;
+        text-align: center;
+      }
+
+      .bloqueDireccion {
+        position: absolute;
+        width: 5.4cm;
+        height: 2cm;
+        top: 1.1cm;
+      }
+
+      .texto {
+        margin-top: 0.3cm;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+
+      th.normal {
+        font-weight: initial;
+      }
+
+      table.tabla {
+        table-layout: fixed;
+        border-collapse: collapse;
+        cellspacing: 0;
+        cellpadding: 0;
+        width: 18.4cm;
+      }
+
+      .mantcuadro {
+        width: 19%;
+        height: 150px;
+        position: relative;
+        border-style: solid;
+        border-width: 1px;
+        display: inline-block;
+        letter-spacing: normal;
+        word-spacing: normal;
+      }
+
+      .mantcab {
+        margin: 1px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .mantpie {
+        position: absolute;
+        bottom: 0px;
+        font-size: x-small;
+        width: 100%;
+        margin: 1px;
+      }
+
+      .mantfecha {
+        float: left;
+        text-align: left;
+        width: 55%;
+      }
+    </style>
+    <!-- Por si acaso se me escapa alguna tilde o así -->
+    <title>Contrato CARE 4 años</title>
+  </head>
+
+  <body>
+    <!-- Página 1 -->
+    <div class="pagina" style="page-break-after: always">
+      <div class="cabecera">
+        <div class="empresa"><%= datos.agente %></div>
+        <div class="bloqueDireccion">
+          <p>
+            <%= datosModelo.direccion1.linea1 %><br />
+            <%= datosModelo.direccion1.linea2 %><br />
+            <%= datosModelo.direccion1.linea3 %>
+          </p>
+          <strong>T</strong> <%= datosModelo.direccion1.telefono %>
+        </div>
+        <% if(typeof datosModelo.direccion2 === 'object') { %>
+        <div class="bloqueDireccion" style="left: 5cm">
+          <p>
+            <%= datosModelo.direccion2.linea1 %><br />
+            <%= datosModelo.direccion2.linea2 %><br />
+            <%= datosModelo.direccion2.linea3 %><br />
+          </p>
+          <strong>T</strong> <%= datosModelo.direccion2.telefono %>
+        </div>
+        <% } %> <% if(typeof datosModelo.direccion3 === 'object') { %>
+        <div class="bloqueDireccion" style="left: 10.5cm">
+          <p>
+            <%= datosModelo.direccion3.linea1 %><br />
+            <%= datosModelo.direccion3.linea2 %><br />
+            <%= datosModelo.direccion3.linea3 %><br />
+          </p>
+          <strong>T</strong> <%= datosModelo.direccion3.telefono %>
+        </div>
+        <% } %>
+        <div class="logo">
+          <img style="width: 3.8cm; height: 1.2cm" src="<%= resUrl %>images/logoGrey.png" />
+        </div>
+        <!-- width: 2.49cm -->
+      </div>
+      <br />
+      <div class="titulo">CONTRATO DE MANTENIMIENTO CARE 1</div>
+      <div class="subtitulo">CONDICIONES PARTICULARES</div>
+      <!-- Datos del cliente -->
+      <div class="texto">
+        <p style="font-family: Toyota Display"><strong>DATOS DEL CLIENTE</strong></p>
+        <div class="pure-g alt-18">
+          <div class="col0B" style="width: 12%"><strong>NIF,NIE,CIF:</strong></div>
+          <div class="col1B" style="width: 32%">&nbsp;<%= datos.cif %></div>
+          <div class="col0B" style="width: 4%"></div>
+          <div class="col0B" style="width: 10%"><strong>Nombre:</strong></div>
+          <div class="col1B" style="width: 40%">&nbsp;<%= datos.nombre %></div>
+        </div>
+        <div class="pure-g alt-18" style="width: 100%">
+          <div class="col0B" style="width: 12%"><strong>Apellidos:</strong></div>
+          <div class="col1B" style="width: 86.85%">&nbsp;<%= datos.apellidos %></div>
+        </div>
+        <div class="pure-g alt-18">
+          <div class="col0B" style="width: 12%"><strong>Teléfono:</strong></div>
+          <div class="col1B" style="width: 32%">&nbsp;<%= datos.telefono %></div>
+        </div>
+        <div class="pure-g alt-18" style="width: 100%">
+          <div class="col0B" style="width: 12%"><strong>Dirección:</strong></div>
+          <div class="col1B" style="width: 86.85%">&nbsp;<%= datos.direccion %></div>
+        </div>
+        <div class="pure-g alt-18">
+          <div class="col0B" style="width: 12%"><strong>Cód. Postal:</strong></div>
+          <div class="col1B" style="text-align: center; width: 8.2%"><%= datos.codigoPostal %></div>
+          <div class="col0B" style="width: 1%"></div>
+          <div class="col0B" style="width: 10%"><strong>Población:</strong></div>
+          <div class="col1B" style="width: 27.5%">&nbsp;<%= datos.poblacion %></div>
+          <div class="col0B" style="width: 1%"></div>
+          <div class="col0B" style="width: 10%"><strong>Provincia:</strong></div>
+          <div class="col1B" style="width: 27.5%">&nbsp;<%= datos.provincia %></div>
+        </div>
+        <div class="pure-g alt-18">
+          <div class="col0B" style="width: 12%"><strong>Email:</strong></div>
+          <div class="col1B" style="width: 86.85%">&nbsp;<%= datos.correoE %></div>
+        </div>
+      </div>
+      <!-- Datos del vehículo -->
+      <div class="texto">
+        <p style="font-family: Toyota Display"><strong>DATOS DEL VEHÍCULO</strong></p>
+        <div class="pure-g alt-18" style="width: 100%">
+          <div class="col0B" style="width: 12%"><strong>Modelo:</strong></div>
+          <div class="col1B" style="width: 86.85%">&nbsp;<%= datos.modelo %></div>
+        </div>
+        <div class="pure-g alt-18">
+          <div class="col0B" style="width: 12%"><strong>Matrícula:</strong></div>
+          <div class="col1B" style="width: 32%">&nbsp;<%= datos.matricula %></div>
+          <div class="col0B" style="width: 4%"></div>
+          <div class="col0B" style="width: 10%"><strong>VIN:</strong></div>
+          <div class="col1B" style="width: 40%">&nbsp;<%= datos.chasis %></div>
+        </div>
+        <div class="pure-g alt-18">
+          <div class="col0B" style="width: 24%"><strong>Fecha 1ª Matriculación: </strong></div>
+          <div class="col1B" style="width: 74.9%">&nbsp;<%= datos.primeraMatriculacion %></div>
+        </div>
+        <div class="texto">
+          <div class="pure-g alt-18">
+            <div class="col0B" style="width: 40%">
+              <p style="font-family: Toyota Display">
+                <strong
+                  >PRECIO <span style="font-size: x-small">(IGIC INCLUIDO)</span> Y FORMA DE PAGO:</strong
+                >
+              </p>
+            </div>
+            <div class="col1B" style="width: 30%; text-align: center">
+              &nbsp;<%= datos.importe %> (<%= datos.formaDePago %>)
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Cobertura -->
+      <div class="texto">
+        <p style="font-family: Toyota Display"><strong>COBERTURA</strong></p>
+        <p>
+          El presente contrato cubre las primeras intervenciones de mantenimiento programado según el
+          siguiente cuadro y de acuerdo a las Condiciones Generales que figuran a continuación.
+        </p>
+        <br />
+        <table class="tabla" style="width: 85%; text-align: center; margin: 0 auto">
+          <!--Centrar tabla: margin:0 auto;-->
+          <thead>
+            <tr>
+              <th class="normal" style="width: 22%">Intervalo de servicio</th>
+              <th class="normal" style="width: 12%">Número de servicios incluidos</th>
+              <th class="normal" style="width: 14%">Duración del contrato</th>
+              <th class="normal" style="width: 14%">Kilometraje máximo</th>
+              <th class="normal">Motorizaciones incluidas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 Año ó 15.000 km</td>
+              <td>4</td>
+              <td>48 meses</td>
+              <td>60.000 km</td>
+              <td>Todas excepto Proace 1.5D y 2.0D y familia Corolla</td>
+            </tr>
+            <tr>
+              <td>1 Año ó 20.000 km</td>
+              <td>4</td>
+              <td>48 meses</td>
+              <td>80.000 km</td>
+              <td>Proace 1.5D y 2.0D</td>
+            </tr>
+            <tr>
+              <td>1 Año ó 15.000 km</td>
+              <td>5</td>
+              <td>60 meses</td>
+              <td>75.000 km</td>
+              <td>Familia Corolla - Campaña 50 aniversario</td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        La cobertura abarcará ya sea la duración o el kilometraje máximo indicado en el cuadro anterior, es
+        decir, lo que primero ocurra, desde la fecha de primera matriculación del vehículo.
+      </div>
+      <!-- Aceptación y conformidad -->
+      <div class="texto">
+        <p style="font-family: Toyota Display">
+          <strong>ACEPTACIÓN y CONFORMIDAD</strong><br /><br />
+          Acepto y presto mi conformidad, una vez leídas, a las Condiciones Particulares antes indicadas y a
+          las Condiciones Generales que figuran al dorso del presente CONTRATO DE MANTENIMIENTO.
+        </p>
+        <br />
+        <div class="pure-g alt-18">
+          <div class="col0B" style="text-align: right; width: 24%">A&nbsp;</div>
+          <div class="col1B" style="text-align: center; width: 10%"><%= datos.dia %></div>
+          <div class="col0B" style="text-align: center; width: 4%">de</div>
+          <div class="col1B" style="text-align: center; width: 20%"><%= datos.mes %></div>
+          <div class="col0B" style="text-align: center; width: 4%">de</div>
+          <div class="col1B" style="text-align: center; width: 10%"><%= datos.año %></div>
+        </div>
+      </div>
+      <!-- Mantenimientos -->
+      <div class="texto">
+        <p style="font-family: Toyota Display"><strong>MANTENIMIENTOS</strong></p>
+        Cumplimentar con el sello del Concesionario o Reparador Autorizado Oficial TOYOTA una vez realizado el
+        mantenimiento.
+        <br />
+        <div class="pure-g alt-18" style="width: 100%; margin: 0 auto; height: max-content">
+          <div class="mantcuadro">
+            <div class="mantcab"><u>Mantenimiento 1</u></div>
+            <div class="mantpie">
+              DMA/RA:<br />Atendido por:<br />
+              <div class="row nowrap">
+                <div class="mantfecha">Fecha:</div>
+                <div>Km.:</div>
+              </div>
+            </div>
+          </div>
+          <div class="mantcuadro">
+            <div class="mantcab"><u>Mantenimiento 2</u></div>
+            <div class="mantpie">
+              DMA/RA:<br />Atendido por:<br />
+              <div class="row nowrap">
+                <div class="mantfecha">Fecha:</div>
+                <div>Km.:</div>
+              </div>
+            </div>
+          </div>
+          <div class="mantcuadro">
+            <div class="mantcab"><u>Mantenimiento 3</u></div>
+            <div class="mantpie">
+              DMA/RA:<br />Atendido por:<br />
+              <div class="row nowrap">
+                <div class="mantfecha">Fecha:</div>
+                <div>Km.:</div>
+              </div>
+            </div>
+          </div>
+          <div class="mantcuadro">
+            <div class="mantcab"><u>Mantenimiento 4</u></div>
+            <div class="mantpie">
+              DMA/RA:<br />Atendido por:<br />
+              <div class="row nowrap">
+                <div class="mantfecha">Fecha:</div>
+                <div>Km.:</div>
+              </div>
+            </div>
+          </div>
+          <div class="mantcuadro">
+            <div class="mantcab">
+              <u>Mantenimiento 5 (solo familia Corolla desde 1 abril-31 diciembre 2023)</u>
+            </div>
+            <div class="mantpie">
+              DMA/RA:<br />Atendido por:<br />
+              <div class="row nowrap">
+                <div class="mantfecha">Fecha:</div>
+                <div>Km.:</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <span style="font-size: x-small">
+          De conformidad con la normativa de protección de datos le informamos que sus datos de contacto
+          incluidos en el fichero de Clientes TOYOTA para el seguimiento de la realización contractual y
+          estudios de calidad. Más información al dorso.
+        </span>
+      </div>
+      <br />
+      <!-- Firma -->
+      <div class="pure-g alt-18" style="font-family: Toyota Display">
+        <div class="col0B" style="width: 10%"></div>
+        <div class="col0B" style="width: 24%">Firma del Comprador</div>
+        <div class="col0B" style="width: 10%"></div>
+        <div class="col0B" style="text-align: center; width: 30%">Firma del Vendedor</div>
+      </div>
+    </div>
+    <!-- Página 2 -->
+    <div class="pagina" style="page-break-after: always">
+      <!-- <div>&nbsp;</div> -->
+    </div>
+    <!-- Página 3 -->
+    <div class="pagina" style="page-break-after: always; color: rgb(85, 85, 85)">
+      <div style="text-align: center; font-family: Toyota Display; line-height: 120%">
+        CONDICIONES GENERALES
+      </div>
+      <div class="pure-g" style="text-align: justify; font-size: x-small; line-height: 140%">
+        <!-- Columna 1 -->
+        <div class="col0B" style="width: 32%">
+          <p><strong>1. OBJETO</strong></p>
+          <p>
+            Las presentes condiciones generales (conjuntamente con todos los documentos en ella mencionados)
+            tienen por objeto regular las condiciones de ejecución del presente contrato de mantenimiento.
+          </p>
+          <p>
+            Las presentes condiciones generales están vinculadas con el número de bastidor del vehículo, por
+            lo tanto, en caso de cambio de titularidad del vehículo, el contratante no tendrá derecho a
+            reclamar el servicio ofrecido, sino que será el nuevo titular del vehículo quien tenga derecho al
+            mismo, todo ello siempre que se cumplan las condiciones previstas en el presente documento.
+          </p>
+          <p>
+            Sol Naciente Automoción, S.L., entidad importadora en exclusiva de vehículos y repuestos de la
+            marca &ldquo;Toyota&rdquo; en el territorio de las Islas Canarias, asegura las prestaciones
+            definidas en estas condiciones generales para el vehículo objeto del presente contrato y durante
+            la vigencia del mismo, en los términos que se recogen en dicho contrato.
+          </p>
+          <p><strong>2. COMPROMISOS DEL CLIENTE</strong></p>
+          <p>Al suscribir el presente contrato usted se compromete a:</p>
+          <p>
+            i. No realizar ninguna compra falsa o fraudulenta. Si razonablemente se pudiera considerar que se
+            ha hecho una compra de esta índole estaremos autorizados a anularla e informar a las autoridades
+            pertinentes.
+          </p>
+          <p>
+            ii. Facilitarnos su dirección de correo electrónico, dirección postal y/u otros datos de contacto
+            de forma veraz y exacta. Asimismo, consiente que podremos hacer uso de dicha información para
+            ponernos en contacto con usted si es necesario y que se envíe dicha información al Concesionario
+            reparador a fin de realizar el mantenimiento (ver nuestra Política de Privacidad).
+          </p>
+          <p>Si no nos facilita usted toda la información que necesitamos, no podremos cursar su compra.</p>
+          <p>
+            Al suscribir el presente contrato, usted declara ser mayor de 18 años y tener capacidad legal para
+            su celebración.
+          </p>
+          <p><strong>3. CÓMO REALIZAR LA CONTRATACIÓN DEL SERVICIO</strong></p>
+          <p>
+            El Cliente tiene la posibilidad de contratar el servicio de mantenimiento regulado en las
+            presentes condiciones generales de la siguiente manera:
+          </p>
+          <p>
+            - Al contado en cualquier Concesionario o Reparador Autorizado de la red de distribución oficial
+            de Toyota en las Islas Canarias: consulte condiciones con su Concesionario o Reparador Autorizado;
+            o
+          </p>
+          <p>- Vinculado a la financiación del vehículo nuevo. Consulte condiciones con su Concesionario.</p>
+          <p>
+            Tras contratar dicho servicio de mantenimiento, recibirá una copia del presente contrato a través
+            del Concesionario o Reparador Autorizado con el que lo hubiese contratado.
+          </p>
+          <p><strong>4. PRECIO Y FORMA DE PAGO</strong></p>
+          <p>
+            Para contratar el servicio de mantenimiento, el Cliente debe abonar la cantidad indicada por el
+            Concesionario o Reparador Autorizado con el que lo hubiese contratado, atendiendo a la forma de
+            contratación del servicio de acuerdo con lo previsto en el apartado 3 anterior.
+          </p>
+          <p>
+            Dicha cantidad corresponderá única y exclusivamente a la prestación del servicio de mantenimiento
+            regulado en este contrato, con las coberturas expresamente identificadas en el apartado 7 de estas
+            condiciones generales. La sustitución de piezas que no estén identificadas expresamente en dicho
+            apartado 7 en función del intervalo de mantenimiento no está incluida en el precio objeto de este
+            contrato, y serán presupuestadas de forma independiente por parte del Concesionario o Reparador
+            Autorizado al que se solicite el servicio para su aprobación previa por parte del Cliente.
+          </p>
+          <p>
+            Si se realiza la contratación en el propio Concesionario o Reparador Autorizado, deberá seguir el
+            procedimiento indicado en el mismo.
+          </p>
+        </div>
+        <div class="col0B" style="width: 1%"></div>
+        <!-- Columna 2 -->
+        <div class="col0B" style="width: 32%">
+          <p>
+            El pago con tarjeta de crédito o débito, sólo producirá los efectos del pago cuando la cuantía
+            fuese abonada irrevocablemente en la cuenta bancaria del Concesionario o Reparador Autorizado en
+            el que se contrató el servicio objeto del contrato. En cumplimiento de la legislación vigente, se
+            informa al Cliente que no está permitido realizar pagos en efectivo por importe igual o superior a
+            2.500 euros.
+          </p>
+          <p><strong>5. IMPUESTO GENERAL INDIRECTO CANARIO (I.G.I.C.) Y FACTURACIÓN</strong></p>
+          <p>
+            De conformidad con lo dispuesto en el artículo 16 de la Ley 20/1991, de 7 de junio, del Impuesto
+            General Indirecto Canario (I.G.I.C.), la entrega de bienes se entenderá localizada en el
+            territorio de aplicación del I.G.I.C., dado que el servicio será prestado en uno de los
+            Concesionarios o Reparadores Autorizados miembros de la red de distribución oficial de Toyota en
+            las Islas Canarias. En cambio, de conformidad con lo dispuesto en el artículo 17 de la citada Ley,
+            las prestaciones de servicios se entenderán localizadas en el territorio de aplicación del
+            I.G.I.C. cuando el destinatario sea un consumidor final; en el caso de que sea empresario o
+            profesional, se entenderá localizado en sede del destinatario.
+          </p>
+          <p>
+            El tipo de I.G.I.C. aplicable será el legalmente vigente en cada momento en función del objeto del
+            contrato.
+          </p>
+          <p>
+            Usted nos autoriza expresamente a emitir la factura en soporte electrónico, si bien podrá
+            indicarnos en cualquier momento su voluntad de recibir una factura en soporte papel, en cuyo caso,
+            emitiremos y remitiremos la factura en dicho formato.
+          </p>
+          <p><strong>6. DURACIÓN</strong></p>
+          <p>
+            El presente contrato entrará en vigor el día de su suscripción y tendrá una cobertura en función
+            del intervalo de mantenimiento del vehículo de 48/60 meses/60.000/75.000 km (lo que antes suceda)
+            como normal general, 48 meses/80.000 km (lo que antes suceda) para motorizaciones, Proace 1.5D y
+            2.0D, siempre contabilizados a partir de la fecha de la primera matriculación del vehículo y que
+            podrán ser admitidos según la opción reflejada a continuación;
+          </p>
+          <p>Vehículos con intervalos de mantenimiento de 15.000km:</p>
+          <p>1&ordm; mantenimiento= fecha de matriculación + 12 meses o 15.000 km, lo que antes suceda</p>
+          <p>2&ordm; mantenimiento = fecha de matriculación + 24 meses o 30.000km, lo que antes suceda</p>
+          <p>3&ordm; mantenimiento= fecha de matriculación + 36 meses o 45.000km, lo que antes suceda</p>
+          <p>4&ordm; mantenimiento= fecha de matriculación + 48 meses o 60.000km, lo que antes suceda</p>
+          <p>
+            5&ordm; mantenimiento= fecha de matriculación + 60 meses o 75.000km, lo que antes suceda (familia
+            Corolla)
+          </p>
+          <p>Vehículos con intervalos de mantenimiento de 20.000km (motores Proace 1.5D y 2.0D)</p>
+          <p>1&ordm; mantenimiento= fecha de matriculación + 12 meses o 20.000 km, lo que antes suceda</p>
+          <p>2&ordm; mantenimiento = fecha de matriculación + 24 meses o 40.000km, lo que antes suceda</p>
+          <p>3&ordm; mantenimiento= fecha de matriculación + 36 meses o 60.000km, lo que antes suceda</p>
+          <p>4&ordm; mantenimiento= fecha de matriculación + 48 meses o 80.000km, lo que antes suceda</p>
+          <p>Estas condiciones se recogen en el libro de Servicio y Garantía, incluido en el pasaporte.</p>
+          <p>Se excluyen del presente Contrato aquellos mantenimientos que:</p>
+          <p>
+            1.- Excedan 2 meses o 5.000km, (lo que antes suceda, desde la fecha de la primera matriculación
+            del vehículo) en relación al límite máximo de 48 meses &ndash; 80.000 kilómetros (lo que antes
+            suceda, desde la fecha de la primera matriculación del vehículo) establecido o cuyos
+            mantenimientos previos no hayan sido realizados en los vehículos cuyo intervalo de mantenimiento
+            sea de 20.000km/1 año (lo que antes suceda, desde la fecha de la primera matriculación del
+            vehículo)
+          </p>
+        </div>
+        <div class="col0B" style="width: 1%"></div>
+        <!-- Columna 3 -->
+        <div class="col0B" style="width: 32%">
+          <p>
+            2.-Excedan 2 meses o 3.000 kilómetros (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo) en relación al límite máximo de 48 meses o 60.000 km establecido o
+            cuyos mantenimientos previos no hayan sido realizados, en el caso de los vehículos cuyo intervalo
+            sea de 15.000km/1 año, (lo que antes suceda, desde la fecha de la primera matriculación del
+            vehículo)
+          </p>
+          <p><strong>7. COBERTURAS</strong></p>
+          <p>
+            Las prestaciones del presente contrato son adicionales a las contempladas por la garantía
+            contractual del vehículo al que aplican.
+          </p>
+          <p>
+            El contrato cubre las prestaciones siguientes (verificación y reemplazo, en su caso, piezas, mano
+            de obra e impuestos incluidos):
+          </p>
+          <p>
+            Las operaciones de mantenimiento periódico preconizadas por el fabricante del vehículo tanto las
+            definidas como verificables, como las definidas como reemplazables (R) dentro del Libro de
+            Servicio y Garantía entregado con el vehículo.
+          </p>
+          <p>
+            A efectos informativos, se contempla la sustitución de las siguientes piezas en función del
+            intervalo de mantenimiento (mano de obra e impuestos incluidos).
+          </p>
+          <p><strong>Vehículos con intervalo de mantenimiento de 15.000km:</strong></p>
+          <p>
+            A - Mantenimiento de 15.000 km o 1 año (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo)
+          </p>
+          <p>- Aceite motor 5w30 ACEA C2</p>
+          <p>- Aceite motor 0w20 ACEA C2</p>
+          <p>- Filtro de aceite de motor</p>
+          <p>- Arandela de cárter</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+          <p>
+            B.- Mantenimiento de 30.000 km o 2 años (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo)
+          </p>
+          <p>- Aceite motor 5w30 ACEA C2</p>
+          <p>- Aceite motor 0w20 ACEA C2</p>
+          <p>- Filtro de aceite de motor</p>
+          <p>- Arandela de cárter</p>
+          <p>- Filtro de habitáculo</p>
+          <p>- Filtro de aire de motor</p>
+          <p>- Líquido de frenos</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+          <p>
+            C.- Mantenimiento de 45.000 km o 3 años (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo)
+          </p>
+          <p>- Aceite motor 5w30 ACEA C2</p>
+          <p>- Aceite motor 0w20 ACEA C2</p>
+          <p>- Filtro de aceite de motor</p>
+          <p>- Arandela de cárter</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+          <p>
+            D.- Mantenimiento de 60.000 km o 4 años (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo)
+          </p>
+          <p>- Aceite motor 5w30 ACEA C2</p>
+          <p>- Aceite motor 0w20 ACEA C2</p>
+          <p>- Aceite de la TM 75W90</p>
+          <p>- Filtro de aceite de motor</p>
+          <p>- Arandela de cárter</p>
+          <p>- Filtro de habitáculo</p>
+          <p>- Filtro de aire de motor</p>
+          <p>- Líquido de frenos</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+
+          <p>
+            E.- Mantenimiento de 75.000 km o 5 años (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo, solo familia Corolla)
+          </p>
+          <p>- Aceite motor 0w20 ACEA C2</p>
+          <p>- Filtro de aceite de motor</p>
+          <p>- Arandela de cárter</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+
+          <p><strong>Proace 1.5D y 2.0D con intervalos de mantenimiento de 20.000km</strong></p>
+          <p>
+            A - Mantenimiento de 20.000 km ó 1 año (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo)
+          </p>
+          <p>- Aceite del motor 0W30 PFE 3WZ/4WZ</p>
+          <p>- Filtro de aceite del motor</p>
+          <p>- Arandela del cárter</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+          <p>- Rellenado líquido Adblue&reg;</p>
+        </div>
+      </div>
+    </div>
+    <!-- Página 4 -->
+    <div class="pagina" style="color: rgb(85, 85, 85)">
+      <div
+        class="pure-g"
+        style="text-align: justify; font-size: x-small; margin-top: 20px; line-height: 140%"
+      >
+        <!-- Columna 1 -->
+        <div class="col0B" style="width: 32%">
+          <p>
+            B.- Mantenimiento de 40.000 km ó 2 años (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo)
+          </p>
+          <p>- Aceite del motor 0W30 PFE 3WZ/4WZ</p>
+          <p>- Filtro de aceite del motor</p>
+          <p>- Filtro de aire</p>
+          <p>- Filtro de combustible</p>
+          <p>- Arandela del cárter</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+          <p>- Filtro del habitáculo</p>
+          <p>- Líquido de frenos</p>
+          <p>- Rellenado líquido Adblue&reg;</p>
+          <p>
+            C - Mantenimiento de 60.000 km ó 3 años (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo)
+          </p>
+          <p>- Aceite del motor 0W30 PFE 3WZ/4WZ</p>
+          <p>- Filtro de aceite del motor</p>
+          <p>- Arandela del cárter</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+          <p>- Rellenado líquido Adblue&reg;</p>
+          <p>
+            D.- Mantenimiento de 80.000 km ó 4 años (lo que antes suceda, desde la fecha de la primera
+            matriculación del vehículo)
+          </p>
+          <p>- Aceite del motor 0W30 PFE 3WZ/4WZ</p>
+          <p>- Filtro de aceite del motor</p>
+          <p>- Filtro de aire</p>
+          <p>- Filtro de combustible</p>
+          <p>- Arandela del cárter</p>
+          <p>- Rellenado del líquido lavaparabrisas</p>
+          <p>- Filtro del habitáculo</p>
+          <p>- Líquido de frenos</p>
+          <p>- Rellenado líquido Adblue&reg;</p>
+          <p><strong>8. EXCLUSIONES</strong></p>
+          <p>Quedan excluidas del presente contrato:</p>
+          <p>
+            1. Intervenciones ocasionadas por accidentes, robo, intento de robo, transporte del vehículo,
+            incendio o fuerza mayor.
+          </p>
+          <p>
+            2. Intervenciones debidas a negligencia o falta de cuidado, impericia del conductor, utilización
+            defectuosa o sobrecarga (incluso pasajera) del vehículo y, en general, aquellos fallos que puedan
+            derivarse directa o indirectamente de no haberse cumplido estrictamente por el usuario las normas
+            e instrucciones de la Guía de Mantenimiento y del Manual de propietario de los vehículos TOYOTA.
+          </p>
+          <p>
+            3. Intervenciones producidas como consecuencia directa o indirecta de la adición de piezas o
+            elementos ajenos al vehículo fabricado, sustitución de piezas de origen TOYOTA por otras no
+            provenientes del Fabricante, así como las producidas por trabajos, reparaciones o manipulaciones
+            de órganos fuera de la Red Oficial de Concesionarios TOYOTA.
+          </p>
+          <p>
+            4. Intervenciones ocasionadas como consecuencia del abuso en el régimen de conducción o por el
+            sometimiento a esfuerzo impropio del vehículo, tales como carreras, competiciones o rallies, o por
+            circular fuera de las vías de tránsito apropiadas.
+          </p>
+          <p>
+            5. Los reemplazos de piezas definidas en las revisiones de mantenimiento como verificables (V).
+          </p>
+          <p>
+            6. Las verificaciones y reglajes usuales (por ejemplo: equilibrado de ruedas, alineación de
+            dirección, reglaje de faros).
+          </p>
+          <p>
+            7. Las reparaciones y sustituciones, consecuencia de averías o de desgaste normal del elemento.
+            Por ejemplo: bombillas, pilas de mandos a distancia, escobillas del limpiaparabrisas, discos y
+            pastillas de freno, embrague y neumáticos.
+          </p>
+          <p>
+            8. Los gastos de mantenimiento normal de la carrocería y habitáculo, incluida la limpieza y
+            reparaciones de los guarnecidos de los asientos.
+          </p>
+          <p>9. Los guarnecidos, elementos de carrocería, tapizados y pintura.</p>
+          <p>10. Los accesorios.</p>
+          <p>
+            11. Los vehículos cuyo cuentakilómetros hubiera sido desconectado o manipulado en fraude del
+            presente contrato.
+          </p>
+          <p>
+            12. Las operaciones necesarias para la adecuación del vehículo al marco legal vigente como
+            consecuencia de un cambio de legislación posterior a la puesta en circulación del vehículo.
+          </p>
+        </div>
+        <div class="col0B" style="width: 1%"></div>
+        <!-- Columna 2 -->
+        <div class="col0B" style="width: 32%">
+          <p>
+            13. Cualquier responsabilidad civil por muerte, lesión corporal, daño u otra propiedad u pérdida
+            consecuencial de cualquier naturaleza que surja directa o indirectamente durante la vigencia del
+            presente contrato.
+          </p>
+          <p>
+            14. Cualesquiera otras que no estén expresamente incluidas de acuerdo con lo dispuesto en el
+            presente contrato.
+          </p>
+          <p><strong>9. CONDICIONES DE APLICACIÓN</strong></p>
+          <p>El Cliente se compromete a:</p>
+          <p>
+            1. Observar estrictamente las normas e instrucciones del fabricante del vehículo contenidas en el
+            libro &ldquo;Servicio y Garantía&rdquo; y Manual del propietario, y especialmente las relativas a
+            las revisiones periódicas de mantenimiento del vehículo, que se acreditarán con el sello en dicho
+            libro por el Concesionario o Reparador Autorizado Oficial de TOYOTA que efectuó el trabajo.
+          </p>
+          <p>
+            2. Realizar las revisiones periódicas preconizadas por el fabricante incluido en el presente
+            contrato, con una antelación máxima de dos mil kilómetros o de treinta días, sobre el kilometraje
+            o la fecha estipulados para cada revisión en el libro de &ldquo;Servicio y Garantía&rdquo;
+            entregado con el vehículo nuevo.
+          </p>
+          <p>
+            3. Prestar el debido cuidado al mantenimiento, uso y conservación del vehículo, confiando su
+            conducción, en su caso, a conductores cualificados y no alterar el cuentakilómetros y reglajes.
+          </p>
+          <p>
+            4. Las piezas, elementos o conjuntos sustituidos del Vehículo estarán a disposición del Cliente
+            hasta el momento de la retirada del Vehículo. Después, el Taller podrá disponer libremente de los
+            mismos. En cumplimiento de la normativa medioambiental, el Cliente renuncia expresamente a la
+            entrega de los elementos sustituidos para la correcta gestión de los residuos.
+          </p>
+          <p>
+            5. Las intervenciones efectuadas bajo la cobertura del presente contrato, con o sin cambio de
+            piezas, no generarán la prolongación del mismo.
+          </p>
+          <p><strong>10. ACREDITACION</strong></p>
+          <p>
+            El Cliente podrá solicitar las prestaciones objeto del presente contrato tanto al Concesionario o
+            Reparador Autorizado con el que suscribió el contrato como a cualquier otro Concesionario o
+            Reparador Autorizado de la red de distribución oficial Toyota en el territorio de las Islas
+            Canarias.
+          </p>
+          <p>
+            El Cliente deberá exhibir la copia sellada que se le entregue del presente contrato, junto con el
+            libro de &ldquo;Servicio y Garantía&rdquo; del vehículo, para su acreditación ante el
+            Concesionario o Reparador Autorizado de la red de distribución oficial de Toyota en las Islas
+            Canarias al que solicite la prestación del servicio de mantenimiento y, en caso de serle
+            requerido, también ante el citado importador en exclusiva de vehículos y repuestos de la citada
+            marca en el territorio de las Islas Canarias, la entidad Sol Naciente Automoción, S.L.
+          </p>
+          <p>
+            Sin perjuicio de lo anterior, el Concesionario o Reparador Autorizado de la red de distribución
+            oficial de Toyota en las Islas Canarias al que se solicite la prestación de dicho servicio
+            realizará las verificaciones oportunas de la efectiva suscripción del contrato en los registros
+            pertinentes, incluyendo los registros habilitados a tal efecto por la propia entidad importadora,
+            Sol Naciente Automoción, S.L.
+          </p>
+          <p><strong>11. RESOLUCION</strong></p>
+          <p>
+            Con independencia de su finalización por haber llegado a su término o por acuerdo expreso y por
+            escrito de las partes, el presente contrato quedará cancelado en los casos de pérdida, robo,
+            siniestro total del vehículo y/ o retirado de la circulación, sin devolución de importe alguno al
+            Cliente.
+          </p>
+          <p>
+            Igualmente, la no observancia por el Cliente de las obligaciones asumidas en el presente contrato,
+            facultará al Concesionario o Reparador Autorizado con el que lo suscribió para dar por terminado
+            el contrato por incumplimiento, mediante comunicación por carta certificada.
+          </p>
+        </div>
+        <div class="col0B" style="width: 1%"></div>
+        <!-- Columna 3 -->
+        <div class="col0B" style="width: 32%">
+          <p><strong>12. CESIÓN DE DERECHOS Y OBLIGACIONES</strong></p>
+          <p>
+            El contrato es vinculante tanto para usted como para nosotros, así como para nuestros respectivos
+            sucesores, cesionarios y causahabientes.
+          </p>
+          <p>
+            Usted no podrá transmitir, ceder, gravar o de cualquier otro modo transferir el contrato o alguno
+            de los derechos u obligaciones derivados del mismo, sin haber obtenido nuestro consentimiento
+            previo por escrito, salvo lo previsto en la cláusula 1&ordf; de las presentes condiciones
+            generales.
+          </p>
+          <p>
+            Podemos transmitir, ceder, gravar, subcontratar o de cualquier otro modo transferir el contrato o
+            alguno de los derechos u obligaciones derivados del mismo, en cualquier momento durante su
+            vigencia.
+          </p>
+          <p>
+            Para evitar cualquier duda, dichas transmisiones, cesiones, gravámenes u otras transferencias no
+            afectarán a los derechos que, en su caso, usted, como consumidor, tiene reconocidos por ley ni
+            anularán, reducirán o limitarán de cualquier otra forma las garantías, tanto expresas como
+            tácitas, que le hubiésemos podido otorgar.
+          </p>
+          <p><strong>13. MEDIOS TÉCNICOS PARA CORREGIR ERRORES</strong></p>
+          <p>
+            En caso de que usted detectase que se ha producido un error al introducir sus datos personales
+            durante el proceso de compra del vehículo o contratación del servicio objeto del presente
+            contrato, podrá modificar los mismos a través del Concesionario o Reparador Autorizado donde
+            realizó la contratación del servicio objeto del contrato.
+          </p>
+          <p><strong>14. PROTECCIÓN DE DATOS</strong></p>
+          <p>
+            Usted consiente y autoriza expresamente, que los datos personales que nos proporciona, sean
+            incorporados por este Concesionario y SOL NACIENTE AUTOMOCIÓN S.L. con domicilio en C/ Diego Vega
+            Sarmiento. 5, Las Palmas de Gran Canaria, a sus respectivos ficheros con la finalidad de conocer
+            la oferta de productos y servicios TOYOTA, así como para la correcta atención y control de calidad
+            de nuestros productos y servicios, la realización de encuestas de opinión con la finalidad de
+            mejorar la calidad de nuestros servicios y productos. Asimismo podrán tratar y cruzar estos datos
+            personales con la finalidad de remitirle vía telefónica, postal o electrónica, incluyendo por SMS,
+            información personalizada que pueda resultar de su interés sobre los productos o servicios
+            relacionados con el mundo del automóvil y de la marca. SOL NACIENTE podrá comunicar los datos, con
+            la misma finalidad, a su red de distribución, que puede consultar en: www.toyota-canarias.es, así
+            como a otras empresas afiliadas de Toyota Motor Corporation con similar actividad, que puede
+            consultar en www.toyota-global.com, tanto dentro como fuera del Espacio Económico Europeo. Usted
+            podrá ejercitar sus derechos de acceso, rectificación, limitación en el tratamiento, portabilidad,
+            cancelación y oposición, dirigiendo comunicación, por Email a: dpd@toyota-canarias.es, acompañada
+            de fotocopia del DNI, también podrá dirigirse por escrito en los mismos términos y adjuntando
+            fotocopia de su DNI a Sol Naciente Automoción S.L., (en la dirección C/Diego Vega Sarmiento. 5, CP
+            35014, Las Palmas de Gran Canaria, con la referencia &ldquo;Datos Personales&rdquo;, según proceda
+            y estime.
+          </p>
+          <p><strong>15. JURISDICCIÓN</strong></p>
+          <p>
+            Para cualquier cuestión que pudiera surgir con ocasión de la interpretación o cumplimiento del
+            presente contrato, el cliente, con renuncia expresa del fuero que pudiera corresponderle, se
+            somete expresamente a la jurisdicción y competencia de los Tribunales del lugar en que deba
+            cumplirse la obligación.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
