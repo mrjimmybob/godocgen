@@ -43,6 +43,15 @@ export async function generatePdf(params: GeneratePdfParams): Promise<Buffer> {
         primeraMatriculacion = `${day}/${month}/${year}`;
     }
 
+    // Format importe to 2 decimal places and add € symbol
+    let importe = data.importe;
+    if (importe !== undefined && importe !== null) {
+        const numImporte = parseFloat(importe.toString());
+        if (!isNaN(numImporte)) {
+             importe = numImporte.toFixed(2) + " €";
+        }
+    }
+
     // Resolve static directory path for file:// protocol
     // Assuming backend is at process.cwd() and frontend is at ../frontend
     const staticDir = path.resolve(process.cwd(), "../frontend/static");
@@ -51,7 +60,7 @@ export async function generatePdf(params: GeneratePdfParams): Promise<Buffer> {
 
     // 4. Render HTML
     const html = await ejs.render(template, {
-        datos: { ...data, primeraMatriculacion },
+        datos: { ...data, primeraMatriculacion, importe },
         datosModelo: data.datosModelo,
         resUrl
     });
