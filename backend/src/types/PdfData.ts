@@ -29,6 +29,7 @@ export interface PdfData {
     matricula: string;
     chasis: string;
     primeraMatriculacion: string;
+    fechaMatriculacion?: string;
 
     importe: string;
     formaDePago: string;

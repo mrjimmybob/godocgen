@@ -9,7 +9,7 @@ export async function getCareContractData(cif: string): Promise<ContractData | n
             .input("cif", sql.VarChar, cif)
             .query(`
                 SELECT TOP 1
-                    Agente, Emp, Vendedor,
+                    Fecha, Agente, Emp, Vendedor,
                     VehiculoMaestro, Chasis, Matricula, Modelo, CodMarca, FechaMatriculacion,
                     CodCliente, Cif, Nombre, Apellidos, Telefono, Email, Direccion, CodigoPostal, Poblacion, Provincia,
                     Contrato, Tipo, ImporteFinal, ImporteRecomendado, FormaDePago
@@ -20,6 +20,31 @@ export async function getCareContractData(cif: string): Promise<ContractData | n
         if (result.recordset.length === 0) return null;
 
         const row = result.recordset[0];
+
+        // Parse Fecha for contract date
+        let dia = "";
+        let mes = "";
+        let año = "";
+
+        if (row.Fecha) {
+            const date = new Date(row.Fecha);
+            dia = date.getDate().toString();
+            const meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+            mes = meses[date.getMonth()];
+            año = date.getFullYear().toString();
+        }
+
+        // Format FechaMatriculacion to DD/MM/YYYY
+        let fechaMatriculacion = row.FechaMatriculacion;
+        if (fechaMatriculacion) {
+            const date = new Date(fechaMatriculacion);
+            if (!isNaN(date.getTime())) {
+                const day = date.getDate().toString().padStart(2, "0");
+                const month = (date.getMonth() + 1).toString().padStart(2, "0");
+                const year = date.getFullYear();
+                fechaMatriculacion = `${day}/${month}/${year}`;
+            }
+        }
 
         return {
             // Client
@@ -37,23 +62,18 @@ export async function getCareContractData(cif: string): Promise<ContractData | n
             matricula: row.Matricula,
             modelo: row.Modelo,
             chasis: row.Chasis,
-            fechaMatriculacion: row.FechaMatriculacion, // Assuming string DD/MM/YYYY
+            fechaMatriculacion: fechaMatriculacion, 
 
             // Contract
             contrato: row.Contrato,
             tipo: row.Tipo,
-            importe: row.ImporteFinal, // Or ImporteRecomendado? User said "Importe" in sample.json.
+            importe: row.ImporteFinal, 
             formaDePago: row.FormaDePago,
             
-            // Date components (will be parsed from current date or contract date?)
-            // User said "dia, mes, Año" in sample.json. 
-            // Usually this is the contract date. 
-            // But the query doesn't return a Contract Date, only FechaMatriculacion.
-            // I'll leave them undefined for now or use current date if needed?
-            // User said "Contract Information: Importe, FormaDePago, dia,mes (written month name), and Año."
-            // But the query for CARE_Contract doesn't list a "FechaContrato".
-            // I will assume we might need to add it or it's missing. 
-            // For now I'll leave them blank in the object.
+            // Date components
+            dia,
+            mes,
+            año
         };
     } catch (err) {
         console.error("Error fetching CARE contract:", err);

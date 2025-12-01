@@ -34,13 +34,16 @@ export async function generatePdf(params: GeneratePdfParams): Promise<Buffer> {
     const template = fs.readFileSync(filePath, "utf8");
 
     // Format date to DD/MM/YYYY
-    let primeraMatriculacion = data.primeraMatriculacion;
-    if (primeraMatriculacion && primeraMatriculacion.includes("T")) {
+    // Check both primeraMatriculacion and fechaMatriculacion (fallback)
+    let primeraMatriculacion = data.primeraMatriculacion || (data as any).fechaMatriculacion;
+    if (primeraMatriculacion) {
         const date = new Date(primeraMatriculacion);
-        const day = date.getDate().toString().padStart(2, "0");
-        const month = (date.getMonth() + 1).toString().padStart(2, "0");
-        const year = date.getFullYear();
-        primeraMatriculacion = `${day}/${month}/${year}`;
+        if (!isNaN(date.getTime())) {
+            const day = date.getDate().toString().padStart(2, "0");
+            const month = (date.getMonth() + 1).toString().padStart(2, "0");
+            const year = date.getFullYear();
+            primeraMatriculacion = `${day}/${month}/${year}`;
+        }
     }
 
     // Format importe to 2 decimal places and add € symbol
@@ -52,11 +55,9 @@ export async function generatePdf(params: GeneratePdfParams): Promise<Buffer> {
         }
     }
 
-    // Resolve static directory path for file:// protocol
-    // Assuming backend is at process.cwd() and frontend is at ../frontend
-    const staticDir = path.resolve(process.cwd(), "../frontend/static");
-    // Ensure forward slashes for URL and add trailing slash
-    const resUrl = "file:///" + staticDir.replace(/\\/g, "/") + "/";
+    // Use HTTP URL for assets (requires frontend server running on port 5173)
+    // This handles both <%= resUrl %>/fonts/... (double slash is fine) and <%= resUrl %>images/...
+    const resUrl = "http://localhost:5173/";
 
     // 4. Render HTML
     const html = await ejs.render(template, {
