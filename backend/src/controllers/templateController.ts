@@ -1,27 +1,14 @@
 import { Request, Response } from "express";
 import path from "path";
 import fs from "fs";
-import { pool } from "../db/sql";
+
 
 export const getCareTemplatesByType = async (req: Request, res: Response) => {
   try {
     const careType = parseInt(req.params.careType);
     if (isNaN(careType)) return res.status(400).json({ error: "Invalid care type" });
 
-    const result = await pool
-      .request()
-      .input("careType", careType)
-      .query(`
-        SELECT LOWER(REPLACE(Nombre, ' ', '_')) AS Dir
-        FROM CARE_Tipo
-        WHERE Tipo = @careType
-      `);
-
-    if (!result.recordset.length) {
-      return res.status(404).json({ error: "Tipo not found" });
-    }
-
-    const dir = result.recordset[0].Dir;
+    const dir = careType.toString();
 
     const templatesPath = path.join(process.cwd(), "src", "templates", "care", dir);
 

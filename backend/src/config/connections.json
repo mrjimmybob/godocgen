@@ -1,120 +1,120 @@
 [
   {
     "name": "Toyogran",
-    "server": "SNUB06.toyota-canarias.com.es",
-    "database": "Autonet_TY",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Arinaga",
-    "server": "SNUB06.toyota-canarias.com.es",
-    "database": "Autonet_TY",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Toyoten",
-    "server": "SNUB06.toyota-canarias.com.es",
-    "database": "Autonet_TN",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Chafiras",
-    "server": "SNUB06.toyota-canarias.com.es",
-    "database": "Autonet_TN",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "SolNaciente",
-    "server": "SNUB07.toyota-canarias.com.es",
+    "server": "HLSW01",
     "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Lexus",
-    "server": "SNUB07.toyota-canarias.com.es",
+    "server": "HLSW01",
     "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Toyonorte",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_TYN",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Toyomotor",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_TYM",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Toyoservicio",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_TYM",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Lanzarote",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_FAL",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Ingenio",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_ING",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Enma2RM",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_ENM",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Faycan",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_FMT",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Naranjo",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_NAR",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Sonora",
-    "server": "10.2.124.11",
-    "database": "Autonet",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Sonorasur",
-    "server": "10.2.124.11",
-    "database": "Autonet",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   },
   {
     "name": "Frontera",
-    "server": "SNUB08.toyota-canarias.com.es",
-    "database": "Autonet_FRO",
+    "server": "HLSW01",
+    "database": "Autonet_TC",
     "user": "icaragent",
     "password": "toyicaragentota"
   }
