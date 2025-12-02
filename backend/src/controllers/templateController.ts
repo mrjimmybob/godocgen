@@ -3,17 +3,28 @@ import path from "path";
 import fs from "fs";
 
 
+import { pool } from "../db/sql";
+import sql from "mssql";
+
 export const getCareTemplatesByType = async (req: Request, res: Response) => {
   try {
     const careType = parseInt(req.params.careType);
     if (isNaN(careType)) return res.status(400).json({ error: "Invalid care type" });
 
-    const dir = careType.toString();
+    // Query DB to get the directory name (Dir) for this careType
+    const result = await pool.request()
+      .input("tipo", sql.Int, careType)
+      .query("SELECT REPLACE(Nombre, ' ', '_') AS Dir FROM CARE_Tipo WHERE Tipo = @tipo");
 
+    if (result.recordset.length === 0) {
+      return res.status(404).json({ error: "Care type not found" });
+    }
+
+    const dir = result.recordset[0].Dir;
     const templatesPath = path.join(process.cwd(), "src", "templates", "care", dir);
 
     if (!fs.existsSync(templatesPath)) {
-      return res.status(404).json({ error: "Template directory not found" });
+      return res.status(404).json({ error: `Template directory not found: ${dir}` });
     }
 
     const files = fs

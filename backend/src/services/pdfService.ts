@@ -14,10 +14,10 @@ export async function generatePdf(params: GeneratePdfParams): Promise<Buffer> {
 
     const { careDir, templateName, data } = params;
 
-    // Extract ID from careDir (e.g. "CARE1" -> "1")
-    const careId = careDir.replace("CARE", "");
+    // careDir is now the directory name (e.g. "CARE_4_AÑOS") resolved by the controller
+    const careId = careDir; 
 
-    // 3. Load EJS template
+    // Load EJS template
     const filePath = path.join(
         process.cwd(),
         "src",
@@ -57,27 +57,42 @@ export async function generatePdf(params: GeneratePdfParams): Promise<Buffer> {
 
     // Use HTTP URL for assets (requires frontend server running on port 5173)
     // This handles both <%= resUrl %>/fonts/... (double slash is fine) and <%= resUrl %>images/...
-    const resUrl = "http://localhost:5173/";
+    const resUrl = "http://localhost:3000/";
 
-    // 4. Render HTML
+    // Render HTML
     const html = await ejs.render(template, {
         datos: { ...data, primeraMatriculacion, importe },
         datosModelo: data.datosModelo,
         resUrl
     });
 
-    // 5. Generate PDF with Puppeteer
+    // Generate PDF with Puppeteer
     const browser = await puppeteer.launch({
-        headless: true,
-        args: ["--no-sandbox"]
+    headless: true,
+    args: [
+        "--no-sandbox",
+        "--disable-web-security",
+        "--allow-file-access-from-files",
+        "--disable-features=IsolateOrigins,site-per-process"
+    ]
     });
 
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "networkidle0" });
+    await page.evaluateHandle("document.fonts.ready");
+    await page.waitForNetworkIdle({ idleTime: 500, timeout: 5000 });
 
     const pdfBuffer = await page.pdf({
-        format: "A4",
-        printBackground: true
+        format: "A4",                 // or: width/height in mm
+        printBackground: true,
+        margin: {
+            top: "1.25cm",
+            bottom: "1.25cm",
+            left: "2.25cm",
+            right: "1.25cm"
+        },
+        preferCSSPageSize: true,      // Important: use @page size from CSS
+        scale: 1,                     // no scaling, 1:1
     });
 
     await browser.close();

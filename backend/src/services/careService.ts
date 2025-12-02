@@ -5,7 +5,7 @@ export async function getCareDocuments(): Promise<any[]> {
   
     const request = pool.request();
     const result = await request.query(`
-        SELECT Tipo, Nombre, Descripcion FROM CARE_Tipo
+        SELECT Tipo, Nombre, Descripcion, REPLACE(Nombre, ' ', '_') AS Dir FROM CARE_Tipo
     `);
   
     return result.recordset;
