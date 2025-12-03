@@ -2,5 +2,11 @@
 
 @import '@skeletonlabs/skeleton'; 
 @import '@skeletonlabs/skeleton-svelte'; 
-@import '@skeletonlabs/skeleton/themes/sahara';
+@import '@skeletonlabs/skeleton/themes/vox';
+
+/* Global fix for select dropdowns */
+select, select option {
+    background-color: rgb(var(--color-surface-700));
+    color: rgb(var(--on-surface-token));
+}
 
